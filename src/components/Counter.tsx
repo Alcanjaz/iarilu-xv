@@ -1,55 +1,47 @@
 import { useState, useEffect } from 'react';
 
-type TimeLeft = {
-  days: number,
-  hours: number,
-  minutes: number,
-  seconds: number,
-}
-
-const Counter = ({ targetDate }: {targetDate: string}) => {
-  const calculateTimeLeft = () => {
-    const difference = +new Date(targetDate) - +new Date();
-    let timeLeft = {} as TimeLeft;
-
-    if (difference > 0) {
-      timeLeft = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
-      };
-    }
-
-    return timeLeft;
-  };
-
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+export default function CountdownTimer() {
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  })
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
+    const targetDate = new Date('2025-02-21T21:00:00')
 
-    return () => clearTimeout(timer);
-  });
+    const updateCountdown = () => {
+      const now = new Date()
+      const difference = targetDate.getTime() - now.getTime()
+
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / 1000 / 60) % 60),
+          seconds: Math.floor((difference / 1000) % 60)
+        })
+      }
+    }
+
+    updateCountdown()
+    const timer = setInterval(updateCountdown, 1000)
+
+    return () => clearInterval(timer)
+  }, [])
 
   return (
-    <div className="flex justify-center space-x-4 text-xl">
-      <div>
-        <span>{timeLeft.days || '0'}</span> días
-      </div>
-      <div>
-        <span>{timeLeft.hours || '0'}</span> horas
-      </div>
-      <div>
-        <span>{timeLeft.minutes || '0'}</span> minutos
-      </div>
-      <div>
-        <span>{timeLeft.seconds || '0'}</span> segundos
+    <div className="text-center mt-8">
+      <h2 className="text-2xl font-bold text-cyan-800 mb-4">Countdown to the Big Night!</h2>
+      <div className="flex justify-center space-x-4">
+        {Object.entries(timeLeft).map(([unit, value]) => (
+          <div key={unit} className="bg-cyan-100 p-4 rounded-lg">
+            <div className="text-3xl font-bold text-cyan-800">{value}</div>
+            <div className="text-cyan-600 capitalize">{unit}</div>
+          </div>
+        ))}
       </div>
     </div>
-  );
-};
-
-export default Counter;
+  )
+}

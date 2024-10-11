@@ -1,47 +1,104 @@
 ---
-// Aquí importaremos los componentes de React para el contador y el modal
-import Counter from '../components/Counter.tsx';
-import RsvpDialog from '../components/Confirmation.tsx';
+import "@/styles/globals.css";
+
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { ReusableDialog } from "@/components/Confirmation";
+import { Button } from "@/components/ui/button";
+import { MapPin, Clock, Calendar, Shirt } from "lucide-react";
 ---
+
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Invitación Fiesta</title>
-    <link rel="stylesheet" href="/styles/global.css">
+    <title>Los XV de Iara</title>
+    <link rel="stylesheet" href="/styles/global.css" />
   </head>
   <body class="bg-cyan-50 text-gray-800">
-    <main class="flex flex-col items-center justify-center min-h-screen py-8">
-      <!-- Hero Section -->
-      <section class="text-center my-8">
-        <h1 class="text-5xl font-bold text-cyan-600">¡Estás Invitado a mis XV!</h1>
-      </section>
+    <div
+      class="font-serif min-h-screen bg-gradient-to-b from-cyan-50 to-cyan-200 py-12 px-4 sm:px-6 lg:px-8"
+    >
+      <div class="max-w-3xl mx-auto space-y-8">
+        {/* Invitation Section */}
+        <section class="text-center">
+          <h1 class="text-4xl font-extrabold font-serif text-cyan-900 mb-4">
+            Te invito a mis 15!
+          </h1>
+          <p class="text-xl text-cyan-700">
+            Compartí mi noche más especial conmigo.
+          </p>
+        </section>
 
-      <!-- Card con Contador -->
-      <div class="bg-white shadow-lg rounded-lg p-6 max-w-lg my-6">
-        <h2 class="text-2xl font-semibold mb-4 text-cyan-700">Cuenta regresiva hasta el evento</h2>
-        <Counter targetDate="2025-02-21T00:00:00" client:load/>
+        {/* Description and Dress Code Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold text-cyan-800"
+              >Detalles del Evento</CardTitle
+            >
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div class="flex items-center space-x-2">
+              <Calendar className="text-cyan-600" />
+              <span>Viernes, 21 de Febrero, 2025</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <Clock className="text-cyan-600" />
+              <span>21 p.m.</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <MapPin className="text-cyan-600" />
+              <span>Club Social Resistencia</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <Shirt className="text-cyan-600" />
+              <span
+                >Vestimenta: Semiformal (Camisita y vestido 😅)</span
+              >
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* RSVP and Confirm Buttons */}
+        <div class="text-center space-x-4">
+          <ReusableDialog
+            title="Confirmar asistencia"
+            triggerText="Confirmar asistencia"
+            description="Al presionar este boton me confirmas tu asistencia con tu nombre"
+            confirmText="Confirmar"
+            onConfirm={() => alert("confirmadooooooo")}
+            client:load
+          />
+          <ReusableDialog
+            title="Enviar regalito💝"
+            triggerText="Regalito"
+            description="Tu presencia es valiosa para mí, pero también aceptamos transferencias 😜"
+            confirmText="Copiar alias"
+            onConfirm={() => alert("confirmadooooooo")}
+            client:load
+          />
+        </div>
+
+        {/* Google Maps Location */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold text-cyan-800"
+              >Ubicación</CardTitle
+            >
+          </CardHeader>
+          <CardContent>
+            <div class="aspect-w-16 aspect-h-9">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.505229972969!2d-58.991184924457436!3d-27.453526216017416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94450cf3450af76d%3A0xcc1c85a3290c02ca!2sClub%20Social%20Resistencia!5e0!3m2!1sen!2sar!4v1728654520956!5m2!1sen!2sar"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowfullscreen={true}
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </CardContent>
+        </Card>
       </div>
-
-      <!-- Card con los Detalles del Evento -->
-      <div class="bg-white shadow-lg rounded-lg p-6 max-w-lg my-6">
-        <h2 class="text-2xl font-semibold text-cyan-700 mb-4">Detalles del Evento</h2>
-        <p><strong>Lugar:</strong> Salón de Eventos "Elegante"</p>
-        <p><strong>Fecha:</strong> 21 de Febrero de 2025</p>
-        <p><strong>Código de vestimenta:</strong> Elegante</p>
-      </div>
-
-      <!-- Botón para Confirmar Asistencia -->
-      <button 
-        class="bg-cyan-600 text-white font-bold py-2 px-4 rounded-full hover:bg-cyan-700"
-        onclick="document.getElementById('rsvp-dialog').showModal()"
-      >
-        Confirmar Asistencia
-      </button>
-
-      <!-- Dialog para Donaciones -->
-      <RsvpDialog />
-
-    </main>
+    </div>
   </body>
 </html>
