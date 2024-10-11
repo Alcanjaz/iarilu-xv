@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 
-export default function CountdownTimer() {
+export function CountdownTimer() {
   const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
+    dias: 0,
+    horas: 0,
+    minutos: 0,
+    segundos: 0
   })
 
   useEffect(() => {
@@ -17,10 +17,10 @@ export default function CountdownTimer() {
 
       if (difference > 0) {
         setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60)
+          dias: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          horas: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutos: Math.floor((difference / 1000 / 60) % 60),
+          segundos: Math.floor((difference / 1000) % 60)
         })
       }
     }
@@ -33,7 +33,7 @@ export default function CountdownTimer() {
 
   return (
     <div className="text-center mt-8">
-      <h2 className="text-2xl font-bold text-cyan-800 mb-4">Countdown to the Big Night!</h2>
+      <h2 className="text-2xl font-bold text-cyan-800 mb-4">Cuenta regresiva para la gran noche!</h2>
       <div className="flex justify-center space-x-4">
         {Object.entries(timeLeft).map(([unit, value]) => (
           <div key={unit} className="bg-cyan-100 p-4 rounded-lg">

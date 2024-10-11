@@ -3,8 +3,8 @@ import "@/styles/globals.css";
 
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { ReusableDialog } from "@/components/Confirmation";
-import { Button } from "@/components/ui/button";
 import { MapPin, Clock, Calendar, Shirt } from "lucide-react";
+import { CountdownTimer } from "@/components/Counter";
 ---
 
 <html lang="es">
@@ -28,6 +28,8 @@ import { MapPin, Clock, Calendar, Shirt } from "lucide-react";
             Compartí mi noche más especial conmigo.
           </p>
         </section>
+
+        <CountdownTimer client:load />
 
         {/* Description and Dress Code Section */}
         <Card>
