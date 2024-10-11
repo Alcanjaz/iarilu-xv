@@ -2,7 +2,7 @@
 import "@/styles/globals.css";
 
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { ReusableDialog } from "@/components/Confirmation";
+import { BankTransferDialog, RSVPDialog } from "@/components/Confirmation";
 import { MapPin, Clock, Calendar, Shirt } from "lucide-react";
 import { CountdownTimer } from "@/components/Counter";
 ---
@@ -135,26 +135,6 @@ import { CountdownTimer } from "@/components/Counter";
           </CardContent>
         </Card>
 
-        {/* RSVP and Confirm Buttons */}
-        <div class="text-center space-x-4">
-          <ReusableDialog
-            title="Confirmar asistencia"
-            triggerText="Confirmar asistencia"
-            description="Al presionar este boton me confirmas tu asistencia con tu nombre"
-            confirmText="Confirmar"
-            onConfirm={() => alert("confirmadooooooo")}
-            client:load
-          />
-          <ReusableDialog
-            title="Enviar regalito💝"
-            triggerText="Regalito"
-            description="Tu presencia es valiosa para mí, pero también aceptamos transferencias 😜"
-            confirmText="Copiar alias"
-            onConfirm={() => alert("confirmadooooooo")}
-            client:load
-          />
-        </div>
-
         {/* Google Maps Location */}
         <Card>
           <CardHeader>
@@ -171,11 +151,15 @@ import { CountdownTimer } from "@/components/Counter";
                 height="100%"
                 style={{ border: 0 }}
                 allowfullscreen={true}
-                loading="lazy"
+                loading="eager"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
           </CardContent>
         </Card>
+        <div class="text-center space-x-4">
+          <RSVPDialog client:load />
+          <BankTransferDialog client:load />
+        </div>
       </div>
     </div>
   </body>

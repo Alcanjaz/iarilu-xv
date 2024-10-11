@@ -47,3 +47,38 @@ export function ReusableDialog({
     </Dialog>
   );
 }
+
+export function BankTransferDialog() {
+  return (
+    <ReusableDialog
+      title="Enviar regalito💝"
+      triggerText="Regalito"
+      description="Tu presencia es valiosa para mí, pero también aceptamos transferencias 😜"
+      confirmText="Copiar alias"
+      onConfirm={() =>
+        navigator.clipboard
+          .writeText("iariluu")
+          .then(() => alert("Alias copiado!"))
+      }
+    />
+  );
+}
+
+export function RSVPDialog() {
+  const openWpp = () =>
+    window
+      .open(
+        "https://api.whatsapp.com/send/?phone=5493624097680&text=Confirmo%20mi%20asistencia%20al%20XV%20mi%20nombre%20es%20",
+        "_blank"
+      )!
+      .focus();
+  return (
+    <ReusableDialog
+      title="Confirmar asistencia"
+      triggerText="Confirmar asistencia"
+      description="Al presionar este boton me confirmas tu asistencia con tu nombre"
+      confirmText="Confirmar"
+      onConfirm={openWpp}
+    />
+  );
+}
