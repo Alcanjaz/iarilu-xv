@@ -7,6 +7,7 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://<random-string>.pages.github.io/',
+  site: 'https://alcanjaz.pages.github.io/',
+  base: 'iarilu-xv',
   integrations: [tailwind(), react()]
 });
