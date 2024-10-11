@@ -9,6 +9,7 @@ import react from '@astrojs/react';
 export default defineConfig({
   site: 'https://alcanjaz.pages.github.io/',
   base: 'iarilu-xv',
+  publicDir: 'public/iarilu-xv',
   integrations: [
     tailwind({
       applyBaseStyles: false,
