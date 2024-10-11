@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "./ui/button";
 import {
   Dialog,
@@ -26,7 +27,7 @@ export function ReusableDialog({
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-cyan-700 hover:bg-cyan-800 text-white font-bold py-2 px-4 rounded">
+        <Button className="bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded">
           {triggerText}
         </Button>
       </DialogTrigger>
@@ -49,16 +50,18 @@ export function ReusableDialog({
 }
 
 export function BankTransferDialog() {
+  const [copied, setCopied] = useState(false);
+
   return (
     <ReusableDialog
       title="Enviar regalito💝"
       triggerText="Regalito"
       description="Tu presencia es valiosa para mí, pero también aceptamos transferencias 😜"
-      confirmText="Copiar alias"
+      confirmText={!copied ? "Copiar alias 📝": "Copiado! Gracias 🩷"}
       onConfirm={() =>
         navigator.clipboard
           .writeText("iariluu")
-          .then(() => alert("Alias copiado!"))
+          .then(() => setCopied(true))
       }
     />
   );
@@ -68,7 +71,7 @@ export function RSVPDialog() {
   const openWpp = () =>
     window
       .open(
-        "https://api.whatsapp.com/send/?phone=5493624097680&text=Confirmo%20mi%20asistencia%20al%20XV%20mi%20nombre%20es%20",
+        "https://api.whatsapp.com/send/?phone=5493624305568&text=Confirmo%20mi%20asistencia%20al%20XV%20mi%20nombre%20es%20",
         "_blank"
       )!
       .focus();

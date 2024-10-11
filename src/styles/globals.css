@@ -5,4 +5,16 @@
   :root {
     --radius: 0.5rem
   }
+  @font-face {
+    font-family: 'Qwitcher Grypen';
+    font-style: bold;
+    font-weight: 700;
+    font-display: swap;
+    src: url(/public/fonts/QwitcherGrypen-Bold.ttf) format('woff2');
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 0.3; }
+  }
 }

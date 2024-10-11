@@ -33,7 +33,7 @@ export function CountdownTimer() {
 
   return (
     <div className="text-center mt-8">
-      <h2 className="text-2xl font-bold text-cyan-800 mb-4">Cuenta regresiva para la gran noche!</h2>
+      <h2 className="text-2xl font-bold text-cyan-100 mb-4">Cuenta regresiva para la gran noche!</h2>
       <div className="flex justify-center space-x-4">
         {Object.entries(timeLeft).map(([unit, value]) => (
           <div key={unit} className="bg-cyan-100 p-4 rounded-lg">
