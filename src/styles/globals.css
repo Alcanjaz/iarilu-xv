@@ -10,7 +10,7 @@
     font-style: bold;
     font-weight: 700;
     font-display: swap;
-    src: url(/public/fonts/QwitcherGrypen-Bold.ttf) format('woff2');
+    src: url(/fonts/QwitcherGrypen-Bold.ttf) format('woff2');
   }
 
   @keyframes twinkle {

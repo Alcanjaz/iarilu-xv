@@ -67,11 +67,11 @@ export function BankTransferDialog() {
   );
 }
 
-export function RSVPDialog() {
+export function RSVPDialog({phoneNumber}: {phoneNumber: string}) {
   const openWpp = () =>
     window
       .open(
-        "https://api.whatsapp.com/send/?phone=5493624305568&text=Confirmo%20mi%20asistencia%20al%20XV%20mi%20nombre%20es%20",
+        `https://api.whatsapp.com/send/?phone=${phoneNumber}&text=Confirmo%20mi%20asistencia%20al%20XV%20mi%20nombre%20es%20`,
         "_blank"
       )!
       .focus();

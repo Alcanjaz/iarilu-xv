@@ -12,26 +12,10 @@ import { CountdownTimer } from "@/components/Counter";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>¡Feliz Cumpleaños, Iara! 🎉</title>
-    <link
-      rel="apple-touch-icon"
-      sizes="57x57"
-      href="/apple-icon-57x57.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="60x60"
-      href="/apple-icon-60x60.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="72x72"
-      href="/apple-icon-72x72.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="76x76"
-      href="/apple-icon-76x76.png"
-    />
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png" />
     <link
       rel="apple-touch-icon"
       sizes="114x114"
@@ -63,24 +47,9 @@ import { CountdownTimer } from "@/components/Counter";
       sizes="192x192"
       href="/android-icon-192x192.png"
     />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="96x96"
-      href="/favicon-96x96.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/favicon-16x16.png"
-    />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/manifest.json" />
     <meta name="robots" content="noindex" />
     <meta
@@ -95,20 +64,22 @@ import { CountdownTimer } from "@/components/Counter";
     <div
       class="font-serif min-h-screen bg-gradient-to-b from-cyan-900 to-cyan-700 py-12 px-4 sm:px-6 lg:px-8"
     >
-    <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
-      {[...Array(100)].map((_, i) => (
-        <Sparkle
-          key={i}
-          className="absolute text-yellow-100 opacity-20 w-2 fill-current"
-          style={{
-            top: `${Math.random() * 100}%`,
-            left: `${Math.random() * 100}%`,
-            fontSize: `${Math.random() * 20 + 10}px`,
-            animation: `twinkle ${Math.random() * 5 + 3}s infinite`,
-          }}
-        />
-      ))}
-    </div>
+      <div class="top-0 left-0 w-full h-full overflow-hidden z-0">
+        {
+          [...Array(100)].map((_, i) => (
+            <Sparkle
+              key={i}
+              className="absolute text-yellow-100 opacity-20 w-2 fill-current"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                fontSize: `${Math.random() * 20 + 10}px`,
+                animation: `twinkle ${Math.random() * 5 + 3}s infinite`,
+              }}
+            />
+          ))
+        }
+      </div>
       <div class="max-w-3xl mx-auto space-y-8">
         {/* Invitation Section */}
         <section class="text-center">
@@ -170,8 +141,8 @@ import { CountdownTimer } from "@/components/Counter";
             </div>
           </CardContent>
         </Card>
-        <div class="text-center space-x-4">
-          <RSVPDialog client:load />
+        <div class="text-center space-x-4 z-50">
+          <RSVPDialog phoneNumber={import.meta.env['PUBLIC_CONTACT_NUMBER']} client:load />
           <BankTransferDialog client:load />
         </div>
       </div>
